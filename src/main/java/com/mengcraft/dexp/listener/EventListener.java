@@ -56,7 +56,7 @@ public class EventListener implements Listener {
     }
 
     @EventHandler(priority = EventPriority.LOW)
-    public void onVIPExp(PlayerExpChangeEvent event) {
+    public void onPlayerExpChange(PlayerExpChangeEvent event) {
         Player player = event.getPlayer();
         HashMap<String, Double> vips = config.getVips();
         for (String vip : vips.keySet()) {
