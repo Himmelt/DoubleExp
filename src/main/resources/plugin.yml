@@ -1,0 +1,12 @@
+name: DoubleExp
+main: com.mengcraft.dexp.DoubleExp
+version: 1.7.10-0.3.0
+commands:
+  dexp:
+    description: "DoubleExp - https://github.com/Himmelt/DoubleExp"
+    usage: "[DoubleExp] /dexp save|reload|lang|..."
+    permission: dexp.admin
+    permission-message: "[DoubleExp] You have no permission <dexp.admin>"
+permissions:
+  dexp.admin:
+    default: op
