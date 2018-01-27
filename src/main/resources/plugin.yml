@@ -4,7 +4,7 @@ version: 1.7.10-0.3.1
 commands:
   dexp:
     description: "DoubleExp - https://github.com/Himmelt/DoubleExp"
-    usage: "[DoubleExp] /dexp save|reload|lang|..."
+    usage: "[DoubleExp] /dexp save|reload|lang|enable|disable"
     permission: dexp.admin
     permission-message: "[DoubleExp] You have no permission <dexp.admin>"
 permissions:
