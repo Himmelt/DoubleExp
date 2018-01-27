@@ -4,3 +4,5 @@
 language: "当前语言为: %s ."
 configSaved: "配置文件已保存."
 configReloaded: "配置文件已重载."
+enable: "已启用多倍经验."
+disable: "已禁用多倍经验."

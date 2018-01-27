@@ -44,6 +44,7 @@ public class CommandDexp extends IICommand {
             @Override
             public boolean execute(CommandSender sender, ArrayList<String> args) {
                 config.setEnable(true);
+                ServerUtils.send(sender, LangKeys.format("enable"));
                 return true;
             }
         });
@@ -51,6 +52,7 @@ public class CommandDexp extends IICommand {
             @Override
             public boolean execute(CommandSender sender, ArrayList<String> args) {
                 config.setEnable(false);
+                ServerUtils.send(sender, LangKeys.format("disable"));
                 return true;
             }
         });

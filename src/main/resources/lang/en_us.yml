@@ -4,3 +4,5 @@
 language: "current language is: %s ."
 configSaved: "config file saved."
 configReloaded: "config file reloaded."
+enable: "double exp enabled."
+disable: "double exp disabled."

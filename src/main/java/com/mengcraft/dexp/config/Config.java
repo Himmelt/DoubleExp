@@ -12,7 +12,7 @@ import java.util.Set;
 public class Config {
 
     private String lang = "en_us";
-    private boolean enable = false;
+    private boolean enable = true;
     private final Map<String, Double> vips = new LinkedHashMap<>();
 
     private final File file;
