@@ -45,6 +45,9 @@ public class Config {
                     }
                 }
             }
+            if (vips.isEmpty()) {
+                vips.put("vip1", 1.0);
+            }
         } catch (Throwable e) {
             ServerUtils.broadcast("config file load exception !!!");
         }
@@ -56,6 +59,9 @@ public class Config {
         try {
             config.set("lang", lang);
             ConfigurationSection vipRatios = config.getConfigurationSection("vipRatios");
+            if (vips.isEmpty()) {
+                vips.put("vip1", 1.0);
+            }
             for (String vip : vips.keySet()) {
                 if (vip != null && !vip.isEmpty()) {
                     vipRatios.set(vip, vips.get(vip));
