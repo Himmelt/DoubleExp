@@ -2,7 +2,6 @@ package com.mengcraft.dexp.command;
 
 import com.mengcraft.dexp.config.Config;
 import com.mengcraft.dexp.config.LangKeys;
-import com.mengcraft.dexp.task.BroadcastTask;
 import com.mengcraft.dexp.util.ServerUtils;
 import org.bukkit.command.CommandSender;
 import org.bukkit.plugin.Plugin;
@@ -25,7 +24,6 @@ public class CommandDexp extends IICommand {
             @Override
             public boolean execute(CommandSender sender, ArrayList<String> args) {
                 config.load();
-                BroadcastTask.runNewTask(plugin, config);
                 ServerUtils.send(sender, LangKeys.format("configReloaded"));
                 return true;
             }

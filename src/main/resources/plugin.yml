@@ -1,6 +1,6 @@
 name: DoubleExp
 main: com.mengcraft.dexp.DoubleExp
-version: 1.7.10-0.3.0
+version: 1.7.10-0.3.1
 commands:
   dexp:
     description: "DoubleExp - https://github.com/Himmelt/DoubleExp"

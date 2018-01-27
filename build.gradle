@@ -1,7 +1,7 @@
 apply plugin: 'java'
 
 group 'com.mengcraft.dexp'
-version '1.7.10-0.3.0'
+version '1.7.10-0.3.1'
 description = 'DoubleExp Plugin'
 archivesBaseName = "DoubleExp"
 

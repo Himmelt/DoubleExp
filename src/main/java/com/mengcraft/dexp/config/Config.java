@@ -12,13 +12,7 @@ import java.util.Set;
 public class Config {
 
     private String lang = "en_us";
-    private int broadcastTime = 3;
-    private boolean broadcastEnable = false;
     private final Map<String, Double> vips = new LinkedHashMap<>();
-
-    private long deadline;
-    private double serverRatio = 1.0;
-    private boolean serverExpUse;
 
     private final File file;
     private final LangKeys langKeys;
@@ -40,9 +34,6 @@ public class Config {
             if (lang == null || lang.isEmpty()) {
                 lang = "en_us";
             }
-            broadcastEnable = config.getBoolean("broadcast.enable");
-            broadcastTime = config.getInt("broadcast.time");
-            serverRatio = config.getDouble("serverRatio");
             ConfigurationSection vipRatios = config.getConfigurationSection("vipRatios");
             if (vipRatios != null) {
                 Set<String> keys = vipRatios.getKeys(false);
@@ -64,9 +55,6 @@ public class Config {
     public void save() {
         try {
             config.set("lang", lang);
-            config.set("broadcast.enable", broadcastEnable);
-            config.set("broadcast.time", broadcastTime);
-            config.set("serverRatio", serverRatio);
             ConfigurationSection vipRatios = config.getConfigurationSection("vipRatios");
             for (String vip : vips.keySet()) {
                 if (vip != null && !vip.isEmpty()) {
@@ -79,40 +67,8 @@ public class Config {
         }
     }
 
-    public boolean broadcastEnable() {
-        return this.broadcastEnable;
-    }
-
     public Map<String, Double> getVips() {
         return vips;
-    }
-
-    public double getServerRatio() {
-        return serverRatio;
-    }
-
-    public void stopDxp() {
-
-    }
-
-    public boolean getServerExpUse() {
-        return serverExpUse;
-    }
-
-    public long getDeadline() {
-        return deadline;
-    }
-
-    public long broadcastTime() {
-        return broadcastTime;
-    }
-
-    public void setServerExpUse(boolean serverExpUse) {
-        this.serverExpUse = serverExpUse;
-    }
-
-    public void setDeadline(int deadline) {
-        this.deadline = deadline;
     }
 
     public void lang(String lang) {

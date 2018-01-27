@@ -4,7 +4,6 @@ import com.mengcraft.dexp.command.CommandDexp;
 import com.mengcraft.dexp.command.IICommand;
 import com.mengcraft.dexp.config.Config;
 import com.mengcraft.dexp.listener.EventListener;
-import com.mengcraft.dexp.task.BroadcastTask;
 import com.mengcraft.dexp.util.ListUtils;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
@@ -21,7 +20,6 @@ public class DoubleExp extends JavaPlugin {
         config.load();
         config.save();
         this.getServer().getPluginManager().registerEvents(new EventListener(config), this);
-        BroadcastTask.runNewTask(this, config);
         command = new CommandDexp("dexp", this, config);
     }
 

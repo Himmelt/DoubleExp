@@ -1,11 +1,8 @@
 package com.mengcraft.dexp.listener;
 
 import com.mengcraft.dexp.config.Config;
-import com.mengcraft.dexp.util.ServerUtils;
-import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
-import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.PlayerDeathEvent;
 import org.bukkit.event.player.PlayerExpChangeEvent;
@@ -34,28 +31,9 @@ public class EventListener implements Listener {
                 return;
             }
         }
-        if (config.getServerRatio() > 1) {
-            event.setDroppedExp((int) (event.getDroppedExp() / config.getServerRatio()));
-        }
     }
 
     @EventHandler
-    public void onServerExp(PlayerExpChangeEvent event) {
-        if (config.getServerExpUse()) {//getConfig.getBoolean("server.exp.use")
-            long currentTime = System.currentTimeMillis();
-            long setTime = config.getDeadline();//.getLong("server.exp.time");
-            if (currentTime <= setTime) {
-                int amount = Math.round(event.getAmount() * (float) config.getServerRatio());
-                event.setAmount(amount);
-                event.getPlayer().sendMessage(ChatColor.GREEN + "多倍经验活动中! 你获得 " + amount + " 点经验");
-            } else {
-                config.stopDxp();
-                ServerUtils.broadcast(ChatColor.RED + "多倍经验活动已结束!");
-            }
-        }
-    }
-
-    @EventHandler(priority = EventPriority.LOW)
     public void onPlayerExpChange(PlayerExpChangeEvent event) {
         Player player = event.getPlayer();
         Map<String, Double> vips = config.getVips();
@@ -65,7 +43,6 @@ public class EventListener implements Listener {
                 return;
             }
         }
-        event.setAmount((int) (event.getAmount() * config.getServerRatio()));
     }
 
 }
