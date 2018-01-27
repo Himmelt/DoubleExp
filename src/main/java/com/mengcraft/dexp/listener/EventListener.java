@@ -10,7 +10,7 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.entity.PlayerDeathEvent;
 import org.bukkit.event.player.PlayerExpChangeEvent;
 
-import java.util.HashMap;
+import java.util.Map;
 
 public class EventListener implements Listener {
 
@@ -23,7 +23,7 @@ public class EventListener implements Listener {
     @EventHandler
     public void onDeathDropExp(PlayerDeathEvent event) {
         Player player = event.getEntity();
-        HashMap<String, Double> vips = config.getVips();
+        Map<String, Double> vips = config.getVips();
         for (String vip : vips.keySet()) {
             if (player.hasPermission(vip)) {
                 double ratio = vips.get(vip);
@@ -43,7 +43,7 @@ public class EventListener implements Listener {
     public void onServerExp(PlayerExpChangeEvent event) {
         if (config.getServerExpUse()) {//getConfig.getBoolean("server.exp.use")
             long currentTime = System.currentTimeMillis();
-            long setTime = config.getServerExpTime();//.getLong("server.exp.time");
+            long setTime = config.getDeadline();//.getLong("server.exp.time");
             if (currentTime <= setTime) {
                 int amount = Math.round(event.getAmount() * (float) config.getServerRatio());
                 event.setAmount(amount);
@@ -58,7 +58,7 @@ public class EventListener implements Listener {
     @EventHandler(priority = EventPriority.LOW)
     public void onPlayerExpChange(PlayerExpChangeEvent event) {
         Player player = event.getPlayer();
-        HashMap<String, Double> vips = config.getVips();
+        Map<String, Double> vips = config.getVips();
         for (String vip : vips.keySet()) {
             if (player.hasPermission(vip)) {
                 event.setAmount((int) (event.getAmount() * vips.get(vip)));

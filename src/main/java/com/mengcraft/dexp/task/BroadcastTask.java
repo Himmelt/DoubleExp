@@ -15,7 +15,9 @@ public class BroadcastTask extends BukkitRunnable {
     }
 
     public void run() {
+        if (config.broadcastEnable()) {
 
+        }
     }
 
     public static void runNewTask(Plugin plugin, Config config) {

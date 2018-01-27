@@ -5,7 +5,8 @@ import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.configuration.file.YamlConfiguration;
 
 import java.io.File;
-import java.util.HashMap;
+import java.util.LinkedHashMap;
+import java.util.Map;
 import java.util.Set;
 
 public class Config {
@@ -13,15 +14,15 @@ public class Config {
     private String lang = "en_us";
     private int broadcastTime = 3;
     private boolean broadcastEnable = false;
+    private final Map<String, Double> vips = new LinkedHashMap<>();
+
+    private long deadline;
     private double serverRatio = 1.0;
-    private final HashMap<String, Double> vips = new HashMap<>();
+    private boolean serverExpUse;
 
     private final File file;
     private final LangKeys langKeys;
     private final YamlConfiguration config = new YamlConfiguration();
-    private boolean serverExpUse;
-    private long serverExpTime;
-
 
     public Config(File file) {
         this.file = new File(file, "config.yml");
@@ -82,7 +83,7 @@ public class Config {
         return this.broadcastEnable;
     }
 
-    public HashMap<String, Double> getVips() {
+    public Map<String, Double> getVips() {
         return vips;
     }
 
@@ -98,8 +99,8 @@ public class Config {
         return serverExpUse;
     }
 
-    public long getServerExpTime() {
-        return serverExpTime;
+    public long getDeadline() {
+        return deadline;
     }
 
     public long broadcastTime() {
@@ -110,8 +111,8 @@ public class Config {
         this.serverExpUse = serverExpUse;
     }
 
-    public void setServerExpTime(int serverExpTime) {
-        this.serverExpTime = serverExpTime;
+    public void setDeadline(int deadline) {
+        this.deadline = deadline;
     }
 
     public void lang(String lang) {
