@@ -1,3 +1,0 @@
-# English Language File
-# Please use UTF-8 encode
-

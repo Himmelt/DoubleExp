@@ -20,13 +20,13 @@ public class LangKeys {
     public LangKeys(File folder) {
         this.folder = folder;
         this.lang = "en_us";
-        this.file = new File(folder, "en_us.txt");
+        this.file = new File(folder, "en_us.yml");
         instance = this;
     }
 
     public void setLang(String lang) {
         this.lang = lang;
-        this.file = new File(folder, lang + ".txt");
+        this.file = new File(folder, lang + ".yml");
         load();
     }
 
@@ -34,16 +34,17 @@ public class LangKeys {
         if (!file.exists()) {
             try {
                 file.getParentFile().mkdirs();
-                InputStream input = this.getClass().getResourceAsStream("/lang/" + lang + ".txt");
+                InputStream input = this.getClass().getResourceAsStream("/lang/" + lang + ".yml");
                 FileUtils.copyInputStreamToFile(input, file);
             } catch (Throwable e) {
-                ServerUtils.broadcast("lang file release exception !!!");
+                e.printStackTrace();
+                ServerUtils.console("lang file load exception !!!");
             }
         }
         try {
             config.load(file);
         } catch (Throwable e) {
-            ServerUtils.broadcast("lang file load exception !!!");
+            ServerUtils.console("lang file load exception !!!");
         }
     }
 

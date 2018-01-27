@@ -40,6 +40,20 @@ public class CommandDexp extends IICommand {
                 return true;
             }
         });
+        addSub(new IICommand("enable") {
+            @Override
+            public boolean execute(CommandSender sender, ArrayList<String> args) {
+                config.setEnable(true);
+                return true;
+            }
+        });
+        addSub(new IICommand("disable") {
+            @Override
+            public boolean execute(CommandSender sender, ArrayList<String> args) {
+                config.setEnable(false);
+                return true;
+            }
+        });
     }
 
     public boolean execute(CommandSender sender, ArrayList<String> args) {

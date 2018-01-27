@@ -12,6 +12,7 @@ import java.util.Set;
 public class Config {
 
     private String lang = "en_us";
+    private boolean enable = false;
     private final Map<String, Double> vips = new LinkedHashMap<>();
 
     private final File file;
@@ -34,6 +35,7 @@ public class Config {
             if (lang == null || lang.isEmpty()) {
                 lang = "en_us";
             }
+            enable = config.getBoolean("enable");
             ConfigurationSection vipRatios = config.getConfigurationSection("vipRatios");
             if (vipRatios != null) {
                 Set<String> keys = vipRatios.getKeys(false);
@@ -49,16 +51,20 @@ public class Config {
                 vips.put("vip1", 1.0);
             }
         } catch (Throwable e) {
-            ServerUtils.broadcast("config file load exception !!!");
+            //e.printStackTrace();
+            ServerUtils.console("config file load exception !!!");
         }
         langKeys.setLang(lang);
-        langKeys.load();
     }
 
     public void save() {
         try {
             config.set("lang", lang);
+            config.set("enable", enable);
             ConfigurationSection vipRatios = config.getConfigurationSection("vipRatios");
+            if (vipRatios == null) {
+                vipRatios = config.createSection("vipRatios");
+            }
             if (vips.isEmpty()) {
                 vips.put("vip1", 1.0);
             }
@@ -69,7 +75,8 @@ public class Config {
             }
             config.save(file);
         } catch (Throwable e) {
-            ServerUtils.broadcast("config file save exception !!!");
+            //e.printStackTrace();
+            ServerUtils.console("config file save exception !!!");
         }
     }
 
@@ -85,4 +92,11 @@ public class Config {
         return this.lang;
     }
 
+    public void setEnable(boolean enable) {
+        this.enable = enable;
+    }
+
+    public boolean getEnable() {
+        return enable;
+    }
 }
