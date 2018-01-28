@@ -85,8 +85,10 @@ public class Config {
     }
 
     public void lang(String lang) {
-        this.lang = lang;
-        langKeys.setLang(lang);
+        if (lang != null && !lang.isEmpty()) {
+            this.lang = lang;
+            langKeys.setLang(lang);
+        }
     }
 
     public String lang() {
